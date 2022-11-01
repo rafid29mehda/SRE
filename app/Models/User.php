@@ -21,6 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'address',
+        'bloodGroup',
+        'gender',
+        'birthDate',
+        'nid',
+        'type'
     ];
 
     /**
@@ -41,4 +48,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * Get all of the shedules for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function shedules()
+    {
+        return $this->hasMany(Shedule::class);
+    }
 }

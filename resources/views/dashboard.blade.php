@@ -1,246 +1,195 @@
-<html>
- <head>
-   <title>Home</title>
-   <style>
-    body{
-	 margin-top: 0;
-	 padding-top: 0;
-	}
-     ul.list{
-	  margin: 0;
-	  padding: 0;
-	  list-style: unordered;
-	  
-     }
-	 ul.list li{
-	   text-decoration: none;
-	   /* display: block; */
-	   display: inline-block;
-	   background-color: #2B6038;
-	   width: 187px;
-	   text-align: center;
-	   border-color: rgb(255, 255, 255);
-	   border-style: solid;
-	   border-width: 1px;
-	   height:60px;
-	   /* display: flex;
-	   justify-content: center;
-	   align-items: center; */
-	   
-	 }
-	 ul.list a{
-		color: #ffffff;
-		text-decoration: none;
-		width: 100%;
-		height: 100%;
-		display: flex;
-	   	justify-content: center;
-	   	align-items: center;
-	 }
-	 ul.list a:hover{
-		color: #2B6038;
+<x-app-layout>
 
-	 }
+    <div class="overview">
+        <div class="title">
+            <h2 class="section--title">Overview</h2>
+            <select name="date" id="date" class="dropdown">
+                <option value="today">Today</option>
+                <option value="lastweek">Last Week</option>
+                <option value="lastmonth">Last Month</option>
+                <option value="lastyear">Last Year</option>
+                <option value="alltime">All Time</option>
+            </select>
+        </div>
+        <div class="cards">
+            <div class="card card-1">
+                <div class="card--data">
+                    <div class="card--content">
+                        <h5 class="card--title">Total Guards</h5>
+                        <h1>42</h1>
+                    </div>
+                    <i class="ri-user-2-line card--icon--lg"></i>
+                </div>
+                <div class="card--stats">
+                    <span><i class="ri-bar-chart-fill card--icon stat--icon"></i>65%</span>
+                    <span><i class="ri-arrow-up-s-fill card--icon up--arrow"></i>10</span>
+                    <span><i class="ri-arrow-down-s-fill card--icon down--arrow"></i>2</span>
+                </div>
+            </div>
+            <div class="card card-2">
+                <div class="card--data">
+                    <div class="card--content">
+                        <h5 class="card--title">Lost Form</h5>
+                        <h1>145</h1>
+                    </div>
+                    <i class="ri-user-line card--icon--lg"></i>
+                </div>
+                <div class="card--stats">
+                    <span><i class="ri-bar-chart-fill card--icon stat--icon"></i>82%</span>
+                    <span><i class="ri-arrow-up-s-fill card--icon up--arrow"></i>230</span>
+                    <span><i class="ri-arrow-down-s-fill card--icon down--arrow"></i>45</span>
+                </div>
+            </div>
+            <div class="card card-3">
+                <div class="card--data">
+                    <div class="card--content">
+                        <h5 class="card--title">Schedule</h5>
+                        <h1>28</h1>
+                    </div>
+                    <i class="ri-calendar-2-line card--icon--lg"></i>
+                </div>
+                <div class="card--stats">
+                    <span><i class="ri-bar-chart-fill card--icon stat--icon"></i>27%</span>
+                    <span><i class="ri-arrow-up-s-fill card--icon up--arrow"></i>31</span>
+                    <span><i class="ri-arrow-down-s-fill card--icon down--arrow"></i>23</span>
+                </div>
+            </div>
+            <div class="card card-4">
+                <div class="card--data">
+                    <div class="card--content">
+                        <h5 class="card--title">Gate Form</h5>
+                        <h1>15</h1>
+                    </div>
+                    <i class="ri-user-line card--icon--lg"></i>
+                </div>
+                <div class="card--stats">
+                    <span><i class="ri-bar-chart-fill card--icon stat--icon"></i>8%</span>
+                    <span><i class="ri-arrow-up-s-fill card--icon up--arrow"></i>11</span>
+                    <span><i class="ri-arrow-down-s-fill card--icon down--arrow"></i>2</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="doctors">
+        <div class="title">
+            <h2 class="section--title">Guards</h2>
+            <div class="doctors--right--btns">
+                <select name="date" id="date" class="dropdown doctor--filter">
+                    <option>Filter</option>
+                    <option value="free">Free</option>
+                    <option value="scheduled">Scheduled</option>
+                </select>
+                <button class="add"><i class="ri-add-line"></i><a href="{{ route('register') }}">add Guard</a></button>
+            </div>
+        </div>
+        <div class="doctors--cards">
+            @foreach($guards as $guard)
+            <a href="#" class="doctor--card">
+                <div class="img--box--cover">
+                    <div class="img--box">
+                        <img src="static/assets/images/1.png" alt="">
+                    </div>
+                </div>
+                <p class="free">{{$guard['id']}}</p>
+                <p class="free">{{$guard['name']}}</p>
+            </a>
+            @endforeach
+            <!-- <a href="#" class="doctor--card">
+                        <div class="img--box--cover">
+                            <div class="img--box">
+                                <img src="static/assets/images/1.png" alt="">
+                            </div>
+                        </div>
+                        <p class="free">Free</p>
+                    </a>
+                    <a href="#" class="doctor--card">
+                        <div class="img--box--cover">
+                            <div class="img--box">
+                                <img src="static/assets/images/2.jpg" alt="">
+                            </div>
+                        </div>
+                        <p class="scheduled">Scheduled</p>
+                    </a>
+                    <a href="#" class="doctor--card">
+                        <div class="img--box--cover">
+                            <div class="img--box">
+                                <img src="/static/assets/images/3.png" alt="">
+                            </div>
+                        </div>
+                        <p class="scheduled">Scheduled</p>
+                    </a>
+                    <a href="#" class="doctor--card">
+                        <div class="img--box--cover">
+                            <div class="img--box">
+                                <img src="/static/assets/images/4.png" alt="">
+                            </div>
+                        </div>
+                        <p class="free">Free</p>
+                    </a>
+                    <a href="#" class="doctor--card">
+                        <div class="img--box--cover">
+                            <div class="img--box">
+                                <img src="/static/assets/images/5.png" alt="">
+                            </div>
+                        </div>
+                        <p class="scheduled">Scheduled</p>
+                    </a>
+                    <a href="#" class="doctor--card">
+                        <div class="img--box--cover">
+                            <div class="img--box">
+                                <img src="/static/assets/images/6.png" alt="">
+                            </div>
+                        </div>
+                        <p class="free">Free</p>
+                    </a>
+                    <a href="#" class="doctor--card">
+                        <div class="img--box--cover">
+                            <div class="img--box">
+                                <img src="/static/assets/images/7.png" alt="">
+                            </div>
+                        </div>
+                        <p class="scheduled">Scheduled</p>
+                    </a> -->
+        </div>
+    </div>
+    <div class="recent--patients">
+        <div class="title">
+            <h2 class="section--title">Schedule Details</h2>
+            <button class="add"><i class="ri-add-line"></i><a href="{{route('shedule.create')}}">Add Shecdule</a></button>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Time</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($shedules as $shedule)
+                    <td>{{$shedule->user['name']}}</td>
+                    <td>{{$shedule['date']}}</td>
+                    <td>{{$shedule->location->name}}</td>
+                    <td>{{$shedule['time_from']}} - {{$shedule['time_to']}}</td>
+                    <td>
+                        <form action="{{route('shedule.destroy', ['shedule'=>$shedule])}}" method="post">
+                            <button type="submit">
+                                <i class="ri-delete-bin-line delete"></i>
+                            </button>
+                            @method('delete')
+                            @csrf
+                            {{-- <input class="btn btn-default" type="submit" value="Delete" /> --}}
+                        </form>
+                    </td>
+                    {{-- <td><a href="{{route('shedule.destroy', ['shedule'=>$shedule])}}"><i class="ri-edit-line edit"></i><i class="ri-delete-bin-line delete"></i></a></td> --}}
+                    </tr>
+                    @endforeach
 
-	 ul.list li:hover{
-	   color: #2B6038;
-	   background-color: rgb(0, 0, 0);
-	 }
-
-	 .imagec{
-	   border-radius: 100px;
-	   padding: 40px;
-	   text-align: center;
-	   vertical-align: middle;
-	 }
-	 .parent{
-	   width: 190px;
-	   /* length: 50px; */
-	   background-color: #4FBA6A;
-	   display: block;
-	   height: 100%;
-	   margin-top: 0;
-	   height: 716px;
-	 }
-	 .name{
-	   margin-left: 30px;
-	   padding: 0;
-	   color: white;
-	   font-size: 20px;
-	   text-align: center;
-	   margin: auto;
-	   text-align: center;
-	   margin: auto;
-	 }
-	 .id{
-	  margin-left: 45px;
-	  color: white;
-	  font-size: 20px;
-	  
-	 }
-	 .features{
-	   display: block;
-	   background-color: white;
-	   width: 80px;
-	   height: 20px;
-	 }
-	 .nav{
-	     background-color: #2B6038;
-		 height: 35px;
-		 font-size: 25px;
-	     font-weight: bold;
-		 font: Tahoma;
-		 padding-top: 0;
-		 margin-top: 0;
-		 position: absolute;
-		 top: 0px;
-		 left: 210px;
-		 width: 900px;
-		 
-	   }
-	    ul.cbs{
-	     padding: 0;
-		 margin-left: 50px;
-		 list-style-type: none;
-		 text-align: center;
-		 padding-left: 80px;
-		 margin-top: 0px;
-		 padding-left: 0px;
-	   }
-	    ul.cbs li{
-	     display: inline;
-		 padding: 15px;
-		 vertical-align: middle;
-		 margin-top: 0px;
-	   }
-	    ul.cbs li a{
-	     text-decoration: none;
-		 padding: 10px 10px 10px 10px;
-		 color: rgb(255, 255, 255);
-		 vertical-align: middle;
-		 margin-top: 20px;
-		 height: 100%;
-	    }
-
-		ul.cbs li a:hover{
-			color: #4FBA6A;
-		}
-		.about{
-		 width: 900px;
-		 height: 250px;
-		 background-color: white;
-		 margin-left: 250px;
-		 margin-top: 40px;
-		 padding-top: 40px;
-		 position: absolute;
-		 top: 60px;
-		 left: 40px;
-		 border: 2px solid #2B6038;
-		 border-width: thick;
-		 overflow: auto;
-		 box-shadow: 10px 10px 5px #2B6038;
-		}
-		h2{
-		 margin-left: 45px;
-		 font-family: Arial;
-		}
-		.para{
-		 margin-left: 45px;
-		 font-family: Arial;
-		}
-		.recent{
-		 width: 900px;
-		 height: 250px;
-		 background-color: white;
-		 position: absolute;
-		 top: 450px;
-		 left: 289px;
-		 border: 2px solid #2B6038;
-		 border-width: thick;
-		 overflow: auto;
-		 box-shadow: 10px 10px 5px #2B6038;
-		}
-	   
-	   .profile{
-	     width: 300px;
-		 margin-right: 25px;
-		 height: 306px;
-		 margin-bottom: 15px;
-		 margin-top: 0px;
-		 padding-top: 0px;
-		}
-		.schedule{
-		 width: 300px;                
-		 height: 307px; 
-       	 margin-right: 25px;
-		 margin-bottom: 15px;
-		 margin-top: 0px;
-		 padding-top: 0px;
-		}
-		.notice{
-		 width: 285px;
-		 height: 306px;
-		 margin-right: 24px;
-		 margin-bottom: 15px;
-		 margin-top: 0px;
-		 padding-top: 2px;
-		}
-		.scanner{
-		 width: 300px;
-		 height: 300px;
-		 margin-right: 25px;
-		 }
-		
-		 
-		.settings{
-		 width: 300px;
-		 height: 300px;
-		 margin-right: 25px;
-	    }
-		.home{
-		 width: 293px;
-		 height: 300px;
-		}
-		.review{
-	     margin-left: 207px;
-		 background-color: #e5e4d7;
-		 display: inline-block;
-		 padding: 50px;
-		 margin-top: 0px;
-		 width:  973px;
-		 height: 602px;
-		 position: absolute;
-		 top: 34px;
-		 left: 24px;
-		 
-	   }
-	  </style>
- </head>
- <body> 
-    
-    <div class="parent">
-	  <img src="../img/prof.png" class="imagec">
-	  <p class="name">Ashikur Rahman</p>
-	  <p class="id"> ID:1000121 </p>
-	  <div class="hov"><ul class="list">
-	    <li><a href="/landing_1">HOME</a></li>
-		<li><a href="/schedule">SCHEDULE</a></li>
-		<li><a href="/profile">PROFILE</a></li>
-		<li><a href="/Scanner">SCANNER</a></li>
-		<li><a href="#">SETTINGS</a></li>
-	  </ul></div>
-	</div>
-	  <div id="nav2">
-	   <p class="review">
-	   
-		<a href="/profile"><img src="../img/profile.png" class="profile"></a>
-        <a href="/schedule"><img src="../img/schedule.png" class="schedule"></a>
-        <a href=""><img src="../img/notices.png" class="notice"></a>
-        <a href="/Scanner"><img src="../img/scanner.png" class="scanner"></a>
-        <a><img src="../img/settings.png" class="settings"></a>
-        <a><img src="../img/folders.png" class="home"></a>		
-	   </p>
-	  </div>
-	 
-  </body>
- </html>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</x-app-layout>
