@@ -57,7 +57,7 @@
                         <br>
                         <div class="input-field">
                             <label>Date & Time</label>
-                            <input name="date" type="datetime" placeholder="Enter your department" required>
+                            <input name="date" type="datetime" placeholder="yyyy/mm/dd" required>
                         </div>
                        
                     </div>
