@@ -1,5 +1,3 @@
-Creating documentation for a GitHub repository is a good practice, especially when it comes to complex technologies like Kubernetes. Below are some core concepts of Kubernetes, along with commands and examples that you can use as a starting point for your documentation.
-
 ### Table of Contents
 - [What is Kubernetes?](#what-is-kubernetes)
 - [Kubernetes Core Concepts](#kubernetes-core-concepts)
